@@ -1,0 +1,16 @@
+<h3>Detalle de producto</h3>
+
+<hr />
+
+<div class="media-left">
+  <%= image_tag @product.image, class: 'media-object' %>
+</div>
+<div class="media-body">
+  <h4 class="media-heading"><%= @product.name %></h4>
+  <p><%= @product.description %></p>
+  <b class="<%= sale_class(@product) %>"><%= number_to_currency @product.price %></b>
+</div>
+
+<hr />
+
+<%= link_to 'Regresar', products_path, class: 'btn btn-primary' %>

@@ -15,7 +15,7 @@
       <td><%= product.id %></td>
       <td><%= product.name %></td>
       <td><%= truncate product.description, length: 15 %></td>
-      <td><%= number_to_currency product.price %></td>
+      <td class="<%= sale_class(product) %>"><%= number_to_currency product.price %></td>
     </tr>
     <% end %>
   </tbody>
@@ -35,8 +35,8 @@
             </div>
             <div class="media-body">
               <h4 class="media-heading"><%= product.name %></h4>
-              <p><%= product.description %></p>
-              <b><%= number_to_currency product.price %></b>
+              <p><%= link_to product.description, product_path(product) %></p>
+              <b class="<%= sale_class(product) %>"><%= number_to_currency product.price %></b>
             </div>
           </div>
         </div>
