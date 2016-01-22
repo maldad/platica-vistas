@@ -1,0 +1,6 @@
+<tr>
+  <td><%= product.id %></td>
+  <td><%= product.name %></td>
+  <td><%= truncate product.description, length: 15 %></td>
+  <td class="<%= sale_class(product) %>"><%= number_to_currency product.price %></td>
+</tr>
