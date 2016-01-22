@@ -1,0 +1,46 @@
+<h3>Listado de Productos</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= product.name %></td>
+      <td><%= truncate product.description, length: 15 %></td>
+      <td><%= number_to_currency product.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row">
+    <% @products.each do |product| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= product.name %>
+        </div>
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag product.image, class: 'media-object' %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= product.name %></h4>
+              <p><%= product.description %></p>
+              <b><%= number_to_currency product.price %></b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>

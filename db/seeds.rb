@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 (1..6).each do |n|
-  Product.create name: "Product #{n}", description: "Awesome product #{n}", price: (10*n), sale: false
+  Product.create name: "Product #{n}", description: "Awesome product #{n}", price: (10*n), sale: false, image: "image_#{n}.png"
 end
