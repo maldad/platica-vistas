@@ -1,5 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-body">
+    <%= link_to new_product_path, class: 'btn btn-success pull-right' do %>
+      <i class="glyphicon glyphicon-plus"></i>
+      Nuevo producto
+    <% end %>
+
     <%= form_tag products_path, method: :get, class: 'form-inline' do %>
       <div class="form-group">
         <%= label_tag :name, 'Nombre' %>
