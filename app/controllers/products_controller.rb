@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = load_products
 
     respond_to do |format|
       format.html
@@ -11,5 +11,14 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+  end
+
+  private
+
+  def load_products
+    products = Product.all
+    products.where!("name like ?", "%#{params[:name]}%") if params[:name].present?
+    products.where!(sale: true) if params[:sale].present?
+    products
   end
 end

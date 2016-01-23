@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_tag products_path, method: :get, class: 'form-inline' do %>
+      <div class="form-group">
+        <%= label_tag :name, 'Nombre' %>
+        <%= text_field_tag :name, params[:name], class: 'form-control' %>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag :sale, '1', params[:sale] %> Sólo ofertas
+        </label>
+      </div>
+      <%= submit_tag 'Buscar', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
