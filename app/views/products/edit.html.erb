@@ -1,0 +1,33 @@
+<h3>Editar producto</h3>
+
+<% if @product.errors.any? %>
+  <div class="alert alert-danger">
+    El producto no se pudo guardar debido a los siguientes errores:
+    <ul>
+      <% @product.errors.full_messages.each do |error| %>
+        <li> <%= error %></li>
+      <% end %>
+    </ul>    
+  </div>
+<% end  %>
+
+<%= form_for @product do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Nombre' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, 'Descripción' %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, 'Precio' %>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :sale %> ¿Oferta?
+    </label>
+  </div>
+  <%= f.submit 'Actualizar producto', class: 'btn btn-primary' %>
+<% end %>
