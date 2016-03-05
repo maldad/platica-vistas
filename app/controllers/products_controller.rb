@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_producto, only: [:show, :edit, :update, :destroy]
+
   def index
     @products = load_products
 
@@ -10,7 +12,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @product }
+      format.xml { render xml: @product }
+    end
   end
 
   def new
@@ -27,6 +33,22 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @product.update product_params
+      redirect_to products_path, notice: 'Producto editado correctamente'
+    else
+      render :edit
+    end
+  end  
+
+  def destroy
+    @product.destroy
+    redirect_to products_path, notice: 'Producto eliminado correctamente'
+  end
+
   private
 
   def load_products
@@ -39,4 +61,9 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :price, :sale)
   end
+
+  def set_producto
+    @product = Product.find(params[:id])
+  end
+
 end
